@@ -1,18 +1,25 @@
 package com.twu.biblioteca;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 public class BibliotecaApp {
 
     private String[] myBooks;
     private PrintStream myPStream;
+    private BufferedReader myReader;
+    private AppInterface myInterface;
 
     public static void main(String[] args) {
         String[] initialBooks = {"A Tale of Two Cities", "Head First Java"};
         PrintStream pStream = new PrintStream(System.out);
+        BufferedReader inStream = new BufferedReader(new InputStreamReader(System.in));
         BibliotecaApp app = new BibliotecaApp(initialBooks, pStream);
+        AppInterface inter = new AppInterface(app, pStream, inStream);
         app.welcome();
-        app.getBooks();
+        inter.getPrompt();
+        inter.getOptions();
     }
 
     public BibliotecaApp(String[] bookList, PrintStream pStream) {

@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.*;
 
+import java.io.BufferedReader;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
@@ -12,7 +13,8 @@ public class BibliotecaTest {
 
     BibliotecaApp testApp;
     PrintStream pStream = mock(PrintStream.class);
-    AppInterface testInter = new AppInterface(pStream);
+    BufferedReader inStream = mock(BufferedReader.class);
+    AppInterface testInter = new AppInterface(testApp, pStream, inStream);
 
 
     @Test
@@ -39,24 +41,29 @@ public class BibliotecaTest {
         String testBooks = "A Tale of Two Cities, Head First Java";
         verify(pStream).println(testBooks);
     }
-/*
+
     @Test
     public void testInterfaceProvidesPromptText() {
-        //PrintStream mockPStream = mock(PrintStream.class);
-        assertEquals(testInter.getPrompt(), "Please select an option from the list:");
-
+        testInter.getPrompt();
+        verify(pStream).println("Please enter the number for an option from the list:");
     }
 
     @Test
     public void testInterfaceOutputsAvailbleOptions(){
-        assertEquals(testInter.getOptions(), "{1. List of Books}");
+        testInter.getOptions();
+        verify(pStream).println("{1. List of Books}");
     }
 
     @Test
     public void testInterfaceGivesBooksWhenGiven1() {
+        String[] seedBooks = {"A Book Adventure", "A Book About Books"};
+        BibliotecaApp testApp = new BibliotecaApp(seedBooks, pStream);
+        AppInterface testInter = new AppInterface(testApp, pStream, inStream);
+
         testInter.doCommand("1");
-        assertEquals(testApp.getBooks(), );
-    }*/
+
+        verify(pStream).println("A Book Adventure, A Book About Books");
+    }
 
     @Test
     public void test() {

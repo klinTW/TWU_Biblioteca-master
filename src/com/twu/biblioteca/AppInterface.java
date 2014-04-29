@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.io.BufferedReader;
 import java.io.PrintStream;
 
 /**
@@ -7,20 +8,29 @@ import java.io.PrintStream;
  */
 public class AppInterface {
 
+    private BibliotecaApp app;
     private PrintStream appPStream;
+    private BufferedReader appInStream;
+
+    public AppInterface(BibliotecaApp testApp, PrintStream pStream, BufferedReader inStream){
+        app = testApp;
+        appPStream = pStream;
+        appInStream = inStream;
+    }
 
     public void getPrompt() {
-        appPStream.println("Please select an option from the list:");
+        appPStream.println("Please enter the number for an option from the list:");
     }
 
     public void getOptions() {
         appPStream.println("{1. List of Books}");
     }
 
-    public AppInterface(PrintStream pStream){
-        appPStream = pStream;
-    }
-
     public void doCommand(String s) {
+        switch (Integer.parseInt(s))
+        {
+            case 1: app.getBooks();
+                break;
+        }
     }
 }
