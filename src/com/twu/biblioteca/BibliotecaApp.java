@@ -1,22 +1,26 @@
 package com.twu.biblioteca;
 
+import java.io.PrintStream;
+
 public class BibliotecaApp {
 
     private String[] myBooks;
+    private PrintStream myPStream;
 
     public static void main(String[] args) {
         String[] initialBooks = {"A Tale of Two Cities", "Head First Java"};
-        BibliotecaApp app = new BibliotecaApp(initialBooks);
-        System.out.println(app.welcome());
-        System.out.println(app.getBooks());
-
+        PrintStream pStream = new PrintStream(System.out);
+        BibliotecaApp app = new BibliotecaApp(initialBooks, pStream);
+        app.welcome();
+        app.getBooks();
     }
 
-    public BibliotecaApp(String[] bookList) {
+    public BibliotecaApp(String[] bookList, PrintStream pStream) {
         myBooks = bookList;
+        myPStream = pStream;
     }
 
-    public String getBooks(){
+    public void getBooks(){
         String finalBookList = "";
 
         for (int i = 0; i < myBooks.length; i++){
@@ -25,9 +29,9 @@ public class BibliotecaApp {
                 finalBookList += ", ";
             }
         }
-        return finalBookList;
+        myPStream.println(finalBookList);
     }
-    public String welcome() {
-        return "Welcome to Bangalore Public Library!";
+    public void welcome() {
+        myPStream.println("Welcome to Bangalore Public Library!");
     }
 }
