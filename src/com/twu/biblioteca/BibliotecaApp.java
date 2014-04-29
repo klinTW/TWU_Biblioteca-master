@@ -5,7 +5,7 @@ public class BibliotecaApp {
     private String[] myBooks;
 
     public static void main(String[] args) {
-        String[] initialBooks = {"A Tale of Two Cities"};
+        String[] initialBooks = {"A Tale of Two Cities", "Head First Java"};
         BibliotecaApp app = new BibliotecaApp(initialBooks);
         System.out.println(app.welcome());
         System.out.println(app.getBooks());

@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 public class BibliotecaTest {
 
     BibliotecaApp testApp;
+    AppInterface testInter = new AppInterface();
 
     @Test
     public void testReturnsSingleBook() {
@@ -29,6 +30,17 @@ public class BibliotecaTest {
         testApp = new BibliotecaApp(seedBooks);
         String testBooks = "A Tale of Two Cities, Head First Java";
         assertEquals(testApp.getBooks(), testBooks);
+    }
+
+    @Test
+    public void testInterfaceProvidesPromptText() {
+        assertEquals(testInter.getPrompt(), "Please select an option from the list:");
+
+    }
+
+    @Test
+    public void testInterfaceOutputsAvailbleOptions(){
+        assertEquals(testInter.getOptions(), "{1. List of Books}");
     }
 
     @Test
