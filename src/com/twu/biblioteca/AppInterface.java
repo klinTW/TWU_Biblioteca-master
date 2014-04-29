@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 
 /**
@@ -32,5 +33,15 @@ public class AppInterface {
             case 1: app.getBooks();
                 break;
         }
+    }
+
+    public void inputLine() {
+        String in = null;
+        try {
+            in = appInStream.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        doCommand(in);
     }
 }

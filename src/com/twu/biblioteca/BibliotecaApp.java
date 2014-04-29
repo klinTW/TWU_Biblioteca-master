@@ -20,6 +20,7 @@ public class BibliotecaApp {
         app.welcome();
         inter.getPrompt();
         inter.getOptions();
+        inter.inputLine();
     }
 
     public BibliotecaApp(String[] bookList, PrintStream pStream) {

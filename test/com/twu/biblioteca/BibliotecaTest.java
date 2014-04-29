@@ -66,6 +66,17 @@ public class BibliotecaTest {
     }
 
     @Test
+    public void testBufferedStreamGiven1UsingPStream(){
+        String[] seedBooks = {"A Book Adventure", "A Book About Books"};
+        BibliotecaApp testApp = new BibliotecaApp(seedBooks, pStream);
+        testInter = new AppInterface(testApp, pStream, inStream);
+        testInter.inputLine();
+
+        verify(pStream).println("A Book Adventure, A Book About Books");
+
+    }
+
+    @Test
     public void test() {
         assertTrue(true);
     }
